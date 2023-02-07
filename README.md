@@ -1,4 +1,4 @@
-## Rename_Bad_Named_Files
+## Rename Bad Named Files
 This script mass renames a whole directory which contains media recursively.
 
 EX: Before: Historical_Footage (480p_30fps_H264-128kbit_AAC).mp4 | After: Historical_Footage.mp4
