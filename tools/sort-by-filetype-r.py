@@ -14,7 +14,7 @@ documents_dir = os.path.join(dir_to_sort, 'Documents')
 
 # List of file extensions for each category
 image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg', '.ico', '.heic', '.webp']
-video_extensions = ['.webm', '.mp4', '.mov', '.flv', '.avi', '.mkv', '.wmv', '.rmvb', '.3gp']
+video_extensions = ['.webm', '.mp4', '.mov', '.flv', '.avi', '.mkv', '.wmv', '.rmvb', '.3gp','.m4v']
 audio_extensions = ['.m4a', '.mp3', '.ogg', '.opus', '.flac', '.alac', '.wav', '.amr', '.aac', '.m4b', '.m4p']
 archive_extensions = ['.zip', '.tar', '.tar.gz', '.rar','.tar', '.gz', '.7z'] 
 document_extensions = ['.txt', '.doc', '.docx', '.pdf', '.ppt', '.pptx', '.xls', '.xlsx','.odt']
