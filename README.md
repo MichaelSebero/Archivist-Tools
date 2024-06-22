@@ -25,6 +25,9 @@ This script will empty the contents of folders recursively in a directory into t
 ## Give Random Name
 This script randomizes filenames in a given directory.
 
+## Mass Uppercase
+This script mass uppercases files and folders and `mass-uppercase-r` does this recursively.
+
 ## Rename Detailed Files
 This script mass renames a whole directory which contains media with long names recursively in a given directory.
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-commands=("Change Hash" "Change Hash Recursive" "Delete Duplicate" "Delete Duplicate Recursive" "Delete Empty Folders" "Empty Directory Contents" "Give Random Name" "Rename Detailed Files" "Sort by File Format" "Sort by Filetype" "Sort by Filetype Recursive" "Sort by Year" "Quit")
+commands=("Change Hash" "Change Hash Recursive" "Delete Duplicate" "Delete Duplicate Recursive" "Delete Empty Folders" "Empty Directory Contents" "Give Random Name" "Mass Uppercase" "Mass Uppercase Recursive" "Rename Detailed Files" "Sort by File Format" "Sort by Filetype" "Sort by Filetype Recursive" "Sort by Year" "Quit")
 
 selected=0
 
@@ -59,6 +59,16 @@ execute_command() {
             python3 Archivist-Tools/tools/give-random-name.py
             read -p "Press Enter to return to the menu..."
             ;;    
+        "Mass Uppercase") 
+            # Add your command logic here
+            python3 Archivist-Tools/tools/mass-uppercase.py
+            read -p "Press Enter to return to the menu..."
+            ;;            
+        "Mass Uppercase Recursive") 
+            # Add your command logic here
+            python3 Archivist-Tools/tools/mass-uppercase-r.py
+            read -p "Press Enter to return to the menu..."
+            ;;            
         "Rename Detailed Files") 
             # Add your command logic here
             python3 Archivist-Tools/tools/rename-detailed-files.py
