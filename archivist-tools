@@ -88,7 +88,7 @@ handle_change_hash() {
 
     while true; do
         clear
-        echo -e "\033[1m  Change Hash Options\033[0m\n  ---------------"
+        echo -e "\033[1m  Change Hash Options\033[0m\n  "
         for i in "${!recursive_options[@]}"; do
             if [ $i -eq $recursive_selected ]; then
                 echo -e "\033[1m➤ ${recursive_options[$i]}\033[0m\n"
@@ -132,7 +132,7 @@ handle_delete_duplicate() {
 
     while true; do
         clear
-        echo -e "\033[1m  Delete Duplicate Options\033[0m\n  ---------------"
+        echo -e "\033[1m  Delete Duplicate Options\033[0m\n  "
         for i in "${!recursive_options[@]}"; do
             if [ $i -eq $recursive_selected ]; then
                 echo -e "\033[1m➤ ${recursive_options[$i]}\033[0m\n"
@@ -176,7 +176,7 @@ handle_mass_uppercase() {
 
     while true; do
         clear
-        echo -e "\033[1m  Mass Uppercase Options\033[0m\n  ---------------"
+        echo -e "\033[1m  Mass Uppercase Options\033[0m\n  "
         for i in "${!recursive_options[@]}"; do
             if [ $i -eq $recursive_selected ]; then
                 echo -e "\033[1m➤ ${recursive_options[$i]}\033[0m\n"
@@ -220,7 +220,7 @@ handle_sort_by_filetype() {
 
     while true; do
         clear
-        echo -e "\033[1m  Sort by Filetype Options\033[0m\n  ---------------"
+        echo -e "\033[1m  Sort by Filetype Options\033[0m\n  "
         for i in "${!recursive_options[@]}"; do
             if [ $i -eq $recursive_selected ]; then
                 echo -e "\033[1m➤ ${recursive_options[$i]}\033[0m\n"
@@ -264,7 +264,7 @@ handle_sort_by_year() {
 
     while true; do
         clear
-        echo -e "\033[1m  Sort by Year Options\033[0m\n  ---------------"
+        echo -e "\033[1m  Sort by Year Options\033[0m\n  "
         for i in "${!recursive_options[@]}"; do
             if [ $i -eq $recursive_selected ]; then
                 echo -e "\033[1m➤ ${recursive_options[$i]}\033[0m\n"
