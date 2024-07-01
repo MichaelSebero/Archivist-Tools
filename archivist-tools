@@ -1,6 +1,6 @@
 #!/bin/bash
 
-commands=("Change Hash" "Change Hash Recursive" "Delete Duplicate" "Delete Duplicate Recursive" "Delete Empty Folders" "Empty Directory Contents" "Give Random Name" "Mass Uppercase" "Mass Uppercase Recursive" "Rename Detailed Files" "Sort by File Format" "Sort by Filetype" "Sort by Filetype Recursive" "Sort by Year" "Quit")
+commands=("Change Hash" "Change Hash Recursive" "Delete Duplicate" "Delete Duplicate Recursive" "Delete Empty Folders" "Empty Directory Contents" "Give Random Name" "Mass Uppercase" "Mass Uppercase Recursive" "Rename Detailed Files" "Sort by File Format" "Sort by Filetype" "Sort by Filetype Recursive" "Sort by Year" "Sort by Year Recursive" "Quit")
 
 selected=0
 
@@ -94,6 +94,11 @@ execute_command() {
             python3 Archivist-Tools/tools/sort-by-year.py
             read -p "Press Enter to return to the menu..."
             ;;
+        "Sort by Year Recursive") 
+            # Add your command logic here
+            python3 Archivist-Tools/tools/sort-by-year-r.py
+            read -p "Press Enter to return to the menu..."
+            ;;            
         "Quit") 
             echo -e "\n\033[1mExiting script\033[0m"
             exit 0
