@@ -51,7 +51,7 @@ execute_command() {
             handle_delete_filename_keyword
             ;;
         "Empty Directory Contents") 
-            python3 Archivist-Tools/empty-directory-contents.py
+            python3 Archivist-Tools/tools/empty-directory-contents.py
             read -p "Press Enter to return to the menu..."
             ;;            
         "Give Random Name") 
