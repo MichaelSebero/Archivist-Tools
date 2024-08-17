@@ -4,7 +4,7 @@ commands=(
     "Change Hash"
     "Delete Duplicate"
     "Delete Empty Folders"
-    "Delete Filename Keyword"  
+    "Delete Filename Keyword"
     "Empty Directory Contents"
     "Give Random Name"
     "Mass Uppercase"
