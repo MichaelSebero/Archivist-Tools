@@ -19,6 +19,9 @@ These scripts look for duplicate file hashes in a given directory then deletes t
 ## Delete Empty Folders
 This script deletes empty folders in a given directory.
 
+## Delete Filename Keyword
+This script deletes files with specific keywords in a given directory and `delete-filename-keyword-r`. does this recursively.
+
 ## Empty Directory Contents
 This script will empty the contents of folders recursively in a directory into the inputted directory and delete the folders which contained the files once emptied.
 
