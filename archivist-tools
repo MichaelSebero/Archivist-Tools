@@ -2,6 +2,7 @@
 
 commands=(
     "Change Hash"
+    "Compare Directories"
     "Delete Duplicate"
     "Delete Empty Folders"
     "Delete Filename Keyword"
@@ -40,6 +41,10 @@ execute_command() {
         "Change Hash") 
             handle_change_hash
             ;;
+        "Compare Directories")  # New feature handling
+            python3 Archivist-Tools/tools/compare-directories.py
+            read -p "Press Enter to return to the menu..."
+            ;;
         "Delete Duplicate") 
             handle_delete_duplicate
             ;;
@@ -47,7 +52,7 @@ execute_command() {
             python3 Archivist-Tools/tools/delete-empty-folders.py
             read -p "Press Enter to return to the menu..."
             ;;
-        "Delete Filename Keyword")  # New feature handling
+        "Delete Filename Keyword") 
             handle_delete_filename_keyword
             ;;
         "Empty Directory Contents") 
@@ -349,17 +354,15 @@ handle_sort_by_year() {
     done
 }
 
-# Main loop
 while true; do
     display_list
+
     read -sn 1 key
 
     case $key in
-        "A") ((selected--)); [ $selected -lt 0 ] && selected=$(( ${#commands[@]} - 1 ));;
+        "A") ((selected--)); [ $selected -lt 0 ] && selected=$(( ${#commands[@]} - 1 )) ;;
         "B") ((selected++)); [ $selected -ge ${#commands[@]} ] && selected=0 ;;
-        "") 
-            execute_command
-            ;;
+        "") execute_command ;;
         *) ;;
     esac
 done

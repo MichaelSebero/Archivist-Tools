@@ -13,6 +13,9 @@ sh /home/$USER/Archivist-Tools/archivist-tools
 ## Change Hash 
 These scripts changes the hash of files in a given directory and `change-hash-r` does this recursively.
 
+## Compare Directories
+This script compares two directories and exports the results to a file on the desktop.
+
 ## Delete Duplicate
 These scripts look for duplicate file hashes in a given directory then deletes them while keeping one original and `delete-duplicate-r` does this recursively.
 
@@ -20,7 +23,7 @@ These scripts look for duplicate file hashes in a given directory then deletes t
 This script deletes empty folders in a given directory.
 
 ## Delete Filename Keyword
-This script deletes files with specific keywords in a given directory and `delete-filename-keyword-r`. does this recursively.
+These scripts deletes files with specific keywords in a given directory and `delete-filename-keyword-r`. does this recursively.
 
 ## Empty Directory Contents
 This script will empty the contents of folders recursively in a directory into the inputted directory and delete the folders which contained the files once emptied.
@@ -29,7 +32,7 @@ This script will empty the contents of folders recursively in a directory into t
 This script randomizes filenames in a given directory.
 
 ## Mass Uppercase
-This script mass uppercases files and folders and `mass-uppercase-r` does this recursively.
+These scripts mass uppercases files and folders and `mass-uppercase-r` does this recursively.
 
 ## Rename Detailed Files
 This script mass renames a whole directory which contains media with long names recursively in a given directory.
