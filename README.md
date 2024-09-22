@@ -29,7 +29,7 @@ These scripts deletes files with specific keywords in a given directory and `del
 This script will empty the contents of folders recursively in a directory into the inputted directory and delete the folders which contained the files once emptied.
 
 ## Give Random Name
-This script randomizes filenames in a given directory.
+This script randomizes filenames in a given directory and `give-random-name-r` does this recursively.
 
 ## Mass Uppercase
 These scripts mass uppercases files and folders and `mass-uppercase-r` does this recursively.
