@@ -1,38 +1,86 @@
 import os
 import shutil
 from datetime import datetime
+from PIL import Image
+import piexif
 
-def organize_files_by_year(directory):
-    # List all files in the directory (non-recursive)
-    files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
-    
-    for file in files:
-        file_path = os.path.join(directory, file)
+# Supported image and video file types
+IMAGE_EXTENSIONS = ('jpg', 'jpeg', 'png', 'heic')
+VIDEO_EXTENSIONS = ('mp4', 'mov', 'avi', 'mkv')
 
-        # Get the last modification date of the file
-        mtime = os.path.getmtime(file_path)
-        last_modified_date = datetime.fromtimestamp(mtime)
+# Function to get the date taken for images from EXIF metadata
+def get_image_date_taken(file_path):
+    try:
+        image = Image.open(file_path)
+        exif_data = image.info.get('exif')
+        if exif_data:
+            exif_dict = piexif.load(exif_data)
+            date_taken = exif_dict.get('Exif', {}).get(piexif.ExifIFD.DateTimeOriginal)
+            if date_taken:
+                date_taken_str = date_taken.decode('utf-8')
+                # Date format is "YYYY:MM:DD HH:MM:SS", we only care about "YYYY" and "MM"
+                date_taken_obj = datetime.strptime(date_taken_str, "%Y:%m:%d %H:%M:%S")
+                return date_taken_obj
+    except Exception as e:
+        print(f"Could not extract date for {file_path}: {e}")
+    return None
 
-        # Extract the year from the last modification date
-        year = last_modified_date.year
+# Function to get the last modified date for videos
+def get_video_date_taken(file_path):
+    try:
+        last_modified_time = os.path.getmtime(file_path)
+        date_taken = datetime.fromtimestamp(last_modified_time)
+        return date_taken
+    except Exception as e:
+        print(f"Could not extract date for {file_path}: {e}")
+    return None
 
-        # Create a folder for the year if it doesn't exist
-        year_folder = os.path.join(directory, str(year))
-        if not os.path.exists(year_folder):
-            os.makedirs(year_folder)
+# Function to organize files by date into year/month and Images/Videos subfolders
+def organize_by_date(src_dir):
+    # Walk through all files in the source directory
+    for root, dirs, files in os.walk(src_dir):
+        for file in files:
+            # Get full path of the file
+            file_path = os.path.join(root, file)
+            date_taken = None
+            media_type = None
 
-        # Move the file to the corresponding year folder
-        destination_path = os.path.join(year_folder, file)
-        shutil.move(file_path, destination_path)
-        print(f"Moved '{file}' to {year_folder}")
+            # Check if the file is an image and get the capture date from EXIF metadata
+            if file.lower().endswith(IMAGE_EXTENSIONS):
+                date_taken = get_image_date_taken(file_path)
+                media_type = "Images"
+            # Check if the file is a video and get the last modified date
+            elif file.lower().endswith(VIDEO_EXTENSIONS):
+                date_taken = get_video_date_taken(file_path)
+                media_type = "Videos"
+
+            # If a date was found, organize the file by that date
+            if date_taken:
+                # Extract the year and month from the date taken
+                year = date_taken.strftime("%Y")
+                month = date_taken.strftime("%B")
+
+                # Create directories for year, month, and media type (Images/Videos) if they don't exist
+                year_dir = os.path.join(src_dir, year)
+                month_dir = os.path.join(year_dir, month)
+                media_dir = os.path.join(month_dir, media_type)
+
+                if not os.path.exists(media_dir):
+                    os.makedirs(media_dir)
+
+                # Move the file to the respective directory
+                shutil.move(file_path, os.path.join(media_dir, file))
+                print(f'Moved {file} to {media_dir}')
+            else:
+                print(f"Date taken not found for {file}, skipping...")
 
 if __name__ == "__main__":
-    # Get the directory path from user input
-    input_directory = input("Enter the directory: ")
+    # Prompt the user to input the source directory
+    source_directory = input("Enter the directory where the files are located: ").strip()
 
-    # Check if the input directory exists
-    if not os.path.exists(input_directory):
-        print("Error: The specified directory does not exist.")
+    # Ensure the entered path exists
+    if not os.path.exists(source_directory):
+        print("Source directory does not exist. Please enter a valid path.")
     else:
-        # Call the function to organize files by year
-        organize_files_by_year(input_directory)
+        organize_by_date(source_directory)
+        print("Sorting complete.")

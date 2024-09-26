@@ -3,7 +3,7 @@
 
 ## How to Install
 ```
-pip install tqdm pillow imagehash
+pip install tqdm pillow imagehash piexif
 
 git clone https://github.com/MichaelSebero/Archivist-Tools
 
